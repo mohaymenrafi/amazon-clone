@@ -3,12 +3,20 @@ import Image from 'next/image';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { BsCart3 } from 'react-icons/bs';
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 export default function Header() {
+  const { data: session } = useSession();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  console.log(cartItems);
+
+  const router = useRouter();
   return (
     <header>
       {/* navbar top */}
-      <div className=" bg-amazon_blue text-white flex items-center p-1 py-2 flex-grow space-x-4">
+      <div className=" bg-amazon_blue text-white flex items-center p-1 py-2 pr-4 flex-grow space-x-4">
         {/* logo */}
         <div className="flex items-center flex-grow sm:flex-grow-0">
           <Image
@@ -30,22 +38,35 @@ export default function Header() {
         </div>
 
         {/* userInfo */}
-        <div className=" flex items-center space-x-2">
-          <div className="link">
-            <p>Hello, John Doe</p>
+        <div className=" flex items-center space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
+          <div className="link" onClick={signIn} role="button">
+            {session ? <p>Hello, {session.user.name}</p> : <p>Sign in</p>}
             <p className="font-bold">Account & lists</p>
           </div>
-          <div className="link">
+          <div
+            className="link"
+            onClick={() => router.push('/orders')}
+            role="button"
+          >
             <p>Returns</p>
             <p className="font-bold">& Orders</p>
           </div>
-          <div className="relative flex items-center link">
+          <div
+            className="relative flex items-center link"
+            onClick={() => router.push('/checkout')}
+            role="button"
+          >
             <span className="bg-yellow-400 w-5 h-5 flex items-center justify-center rounded-full absolute top-0 right-0 md:right-5">
-              0
+              {cartItems.length}
             </span>
             <BsCart3 className="text-4xl" />
             <p className="font-bold mt-4 hidden md:inline-flex">Cart</p>
           </div>
+          {session && (
+            <div className="link" onClick={signOut} role="button">
+              <p>Signout</p>
+            </div>
+          )}
         </div>
       </div>
 

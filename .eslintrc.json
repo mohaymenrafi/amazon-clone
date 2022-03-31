@@ -2,6 +2,8 @@
   "extends": ["next/core-web-vitals", "wesbos"],
   "rules": {
     "react/prop-types": "off",
-    "global-require": "off"
+    "global-require": "off",
+    "jsx-a11y/interactive-supports-focus": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   }
 }
