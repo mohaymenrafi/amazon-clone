@@ -11,6 +11,7 @@ export default function Product({
   rating,
   description,
   price,
+  id,
 }) {
   const [star] = useState(Math.round(rating.rate));
   const dispatch = useDispatch();
@@ -21,6 +22,11 @@ export default function Product({
     rating,
     description,
     price,
+    quantity: 1,
+    id,
+  };
+  const handleAddToCart = () => {
+    dispatch(addToCart(item));
   };
   return (
     <div className=" relative bg-white m-5 p-10 z-30 flex flex-col">
@@ -54,7 +60,7 @@ export default function Product({
       <button
         type="button"
         className="button mt-auto"
-        onClick={() => dispatch(addToCart(item))}
+        onClick={() => handleAddToCart()}
       >
         Add to Cart
       </button>

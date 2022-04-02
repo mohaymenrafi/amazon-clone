@@ -18,7 +18,11 @@ export default function Header() {
       {/* navbar top */}
       <div className=" bg-amazon_blue text-white flex items-center p-1 py-2 pr-4 flex-grow space-x-4">
         {/* logo */}
-        <div className="flex items-center flex-grow sm:flex-grow-0">
+        <div
+          className="flex items-center flex-grow sm:flex-grow-0"
+          onClick={() => router.push('/')}
+          role="button"
+        >
           <Image
             src="/images/amazon_logo.png"
             objectFit="contain"
