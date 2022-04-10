@@ -5,7 +5,7 @@ const Stripe = require('stripe');
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
-const endPointSecret = process.env.WEBHOOK_SIGNING_SECRET;
+const endPointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 // connecting to Firestore DB
 const serviceAccount = require('../../firebase-service-account-config.json');
