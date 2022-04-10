@@ -8,6 +8,10 @@ export default function Home({ products }) {
       <Head>
         <title>Amazon</title>
         <meta name="description" content="Created for learning purpose" />
+        <meta
+          name="google-site-verification"
+          content="CIU5SKi1naU9qP0p_-9zjuvs8dEVxlNL9hOwKoMEhTE"
+        />
         <link rel="icon" href="/amazon-icon.png" />
       </Head>
       <Header />
