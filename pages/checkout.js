@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { CartItems, Header } from '../components';
+import { CartItems, Footer, Header } from '../components';
 import { selectTotal } from '../slices/cartSlice';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
@@ -92,6 +92,7 @@ export default function Checkout() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

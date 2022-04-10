@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Head from 'next/head';
-import { Banner, Header, ProductsFeed } from '../components';
+import { Banner, Footer, Header, ProductsFeed } from '../components';
 
 export default function Home({ products }) {
   return (
@@ -15,6 +15,7 @@ export default function Home({ products }) {
         <Banner />
         <ProductsFeed products={products} />
       </main>
+      <Footer />
     </div>
   );
 }

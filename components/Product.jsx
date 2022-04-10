@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { AiFillStar } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
+import { ToastContainer, toast, Zoom } from 'react-toastify';
 import { addToCart } from '../slices/cartSlice';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Product({
   category,
@@ -27,6 +29,13 @@ export default function Product({
   };
   const handleAddToCart = () => {
     dispatch(addToCart(item));
+    toast.success('Added to the cart', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
   };
   return (
     <div className=" relative bg-white m-5 p-10 z-30 flex flex-col">
@@ -64,6 +73,8 @@ export default function Product({
       >
         Add to Cart
       </button>
+      <ToastContainer />
+
     </div>
   );
 }

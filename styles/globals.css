@@ -9,6 +9,12 @@
   .button {
     @apply text-sm py-2 rounded-sm border border-yellow-300 bg-gradient-to-b from-yellow-200 to-yellow-400 focus:outline-none active:from-yellow-500;
   }
+  .f-text {
+    @apply text-[#dddddd] text-sm;
+  }
+  .f-title {
+    @apply text-white text-lg font-semibold mb-3;
+  }
 }
 
 /* html,

@@ -1,14 +1,16 @@
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 import { onSnapshot, collection, getDocs } from 'firebase/firestore';
-import { getSession, useSession } from 'next-auth/react';
+import { useSession, getSession, signIn } from 'next-auth/react';
 import moment from 'moment';
+
 import db from '../utils/db';
 import Header from '../components/Header';
-import { Order } from '../components';
+import { Footer, Order } from '../components';
 
 export default function Orders({ orders }) {
-  console.log(orders);
+  const { data: session } = useSession();
+
   return (
     <div>
       <Head>
@@ -18,15 +20,30 @@ export default function Orders({ orders }) {
       </Head>
       <Header />
       <main className="bg-white max-w-screen-2xl mx-auto p-10">
-        <h2 className="md:text-3xl text-2xl border-b pb-2 border-yellow-400">
-          Your Orders
-        </h2>
-        <div className="mt-6">
-          {orders.map((order) => (
-            <Order key={order.id} {...order} />
-          ))}
-        </div>
+        {session ? (
+          <>
+            {' '}
+            <h2 className="md:text-3xl text-2xl border-b pb-2 border-yellow-400">
+              Your Orders
+            </h2>
+            <div className="mt-6">
+              {orders.map((order) => (
+                <Order key={order.id} {...order} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-col items-center space-y-4">
+            <h2 className="text-xl sm:text-3xl ">
+              Please Sign In to see your orders
+            </h2>
+            <button type="button" onClick={signIn} className="button w-4/12">
+              Signin
+            </button>
+          </div>
+        )}
       </main>
+      <Footer />
     </div>
   );
 }

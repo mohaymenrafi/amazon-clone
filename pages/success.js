@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { HiCheckCircle } from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
-import { Header } from '../components';
+import { Footer, Header } from '../components';
 import { clearCart } from '../slices/cartSlice';
 
 export default function Success({ successInfo: { name, status } }) {
@@ -40,6 +40,7 @@ export default function Success({ successInfo: { name, status } }) {
           Go to my orders
         </button>
       </main>
+      <Footer />
     </div>
   );
 }
