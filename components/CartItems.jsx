@@ -44,7 +44,7 @@ export default function CartItems({
           {Array(star)
             .fill('')
             .map((_, i) => (
-              <AiFillStar className="text-yellow-500" />
+              <AiFillStar key={i} className="text-yellow-500" />
             ))}
           <p className="text-sm ml-2">({rating.count})</p>
         </div>

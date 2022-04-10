@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 export default function Header() {
   const { data: session } = useSession();
   const cartItems = useSelector((state) => state.cart.cartItems);
-  console.log(cartItems);
 
   const router = useRouter();
   return (
@@ -60,7 +59,7 @@ export default function Header() {
             onClick={() => router.push('/checkout')}
             role="button"
           >
-            <span className="bg-yellow-400 w-5 h-5 flex items-center justify-center rounded-full absolute top-0 right-0 md:right-5">
+            <span className="bg-yellow-400 w-5 h-5 flex items-center justify-center rounded-full absolute top-0 right-0 md:right-5 text-black">
               {cartItems.length}
             </span>
             <BsCart3 className="text-4xl" />
