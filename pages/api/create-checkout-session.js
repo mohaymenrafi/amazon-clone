@@ -17,7 +17,7 @@ export default async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: transformedItems,
     mode: 'payment',
-    success_url: `${process.env.HOST}/success`,
+    success_url: `${process.env.HOST}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${process.env.HOST}/checkout`,
     metadata: {
       email,

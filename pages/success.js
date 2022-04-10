@@ -6,13 +6,12 @@ import { useDispatch } from 'react-redux';
 import { Header } from '../components';
 import { clearCart } from '../slices/cartSlice';
 
-export default function Success() {
-  // { successInfo: { name, status } }
+export default function Success({ successInfo: { name, status } }) {
   const route = useRouter();
   const dispatch = useDispatch();
-  // if (status === 200) {
-  //   dispatch(clearCart());
-  // }
+  if (status === 200) {
+    dispatch(clearCart());
+  }
   return (
     <div className="bg-gray-100 h-screen">
       <Head>
@@ -25,7 +24,7 @@ export default function Success() {
         <div className="flex items-center mb-3">
           <HiCheckCircle className="md:text-4xl text-3xl text-green-500" />
           <h2 className="text-xl md:text-3xl ml-3">
-            Thank you, your order has been confirmed!
+            Thank you {name}, your order has been confirmed!
           </h2>
         </div>
         <p>
@@ -45,16 +44,16 @@ export default function Success() {
   );
 }
 
-// export async function getServerSideProps({ query }) {
-//   const res = await axios.get(
-//     `${process.env.HOST}/api/payment-success?session_id=${query.session_id}`
-//   );
-//   const successInfo = {
-//     name: res.data,
-//     status: res.status,
-//   };
+export async function getServerSideProps({ query }) {
+  const res = await axios.get(
+    `${process.env.HOST}/api/payment-success?session_id=${query.session_id}`
+  );
+  const successInfo = {
+    name: res.data,
+    status: res.status,
+  };
 
-//   return {
-//     props: { successInfo },
-//   };
-// }
+  return {
+    props: { successInfo },
+  };
+}
