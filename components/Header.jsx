@@ -33,11 +33,11 @@ export default function Header() {
 
         {/* search bar   */}
         <div className="hidden sm:flex flex-grow  items-center bg-yellow-400 hover:bg-yellow-500 rounded-md overflow-hidden">
-          {/* <input
+          <input
             type="text"
             className="flex-grow p-2 text-black focus:outline-0"
-          /> */}
-          {/* <BiSearchAlt2 className="px-2 h-10 w-10 cursor-pointer" /> */}
+          />
+          <BiSearchAlt2 className="px-2 h-10 w-10 cursor-pointer" />
         </div>
 
         {/* userInfo */}
