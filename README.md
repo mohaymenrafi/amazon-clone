@@ -3,7 +3,7 @@
 This website is created for demo purpose.
 [Click Here](https://amzn-2.vercel.app/) to view it live. The site is hosted on vercel.
 
-Technologies used:
+### Technologies used:
 
 - Next.js
 - Tailwind
@@ -14,7 +14,7 @@ Technologies used:
 - Axios
 - Moment.js
 
-Some Notable Features:
+### Some Notable Features:
 
 - The website is mainly represents the design of amazon.
 - Add to cart functions and then checkout with Stripe checkouts
